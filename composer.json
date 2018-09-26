@@ -1,0 +1,13 @@
+{
+    "name": "jimchen/script",
+    "description": "Simple to write script in PHP.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JimChen",
+            "email": "18219111672@163.com"
+        }
+    ],
+    "require": {}
+}
