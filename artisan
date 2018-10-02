@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * This file is part of the jimchen/script.
+ *
+ * (c) JimChen <18219111672@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
+require __DIR__.'/vendor/autoload.php';
+
+$app = new \JimChen\Script\Foundation\Application(
+    realpath(__DIR__ . '/src')
+);
+
+$app->singleton(
+    Illuminate\Contracts\Console\Kernel::class,
+    \JimChen\Script\Kernel::class
+);
+
+$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+
+$status = $kernel->handle(
+    $input = new Symfony\Component\Console\Input\ArgvInput,
+    new Symfony\Component\Console\Output\ConsoleOutput
+);
+
+$kernel->terminate($input, $status);
+
+exit($status);

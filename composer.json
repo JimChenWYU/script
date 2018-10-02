@@ -1,7 +1,7 @@
 {
     "name": "jimchen/script",
     "description": "Simple to write script in PHP.",
-    "type": "library",
+    "type": "project",
     "license": "MIT",
     "authors": [
         {
@@ -9,5 +9,21 @@
             "email": "18219111672@163.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.0",
+        "illuminate/console": "~5.5",
+        "illuminate/container": "~5.5",
+        "illuminate/events": "~5.5",
+        "symfony/finder": "~3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "JimChen\\Script\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
 }
