@@ -187,7 +187,7 @@ class Kernel implements KernelContract
     {
         if (is_null($this->artisan)) {
             return $this->artisan = (new Artisan($this->app, $this->events, $this->app->version()))
-                ->resolveCommands($this->commands);
+                ->resolveCommands($this->getCommands());
         }
 
         return $this->artisan;
@@ -237,5 +237,15 @@ class Kernel implements KernelContract
     protected function bootstrappers()
     {
         return $this->bootstrappers;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCommands(): array
+    {
+        return array_merge($this->commands, [
+            \JimChen\Script\Foundation\Console\ConsoleMakeCommand::class
+        ]);
     }
 }

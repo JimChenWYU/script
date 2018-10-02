@@ -117,7 +117,19 @@ class Application extends Container implements ApplicationContract
     {
         $this->basePath = rtrim($basePath, '\/');
 
+        $this->bindPathsInContainer();
+
         return $this;
+    }
+
+    /**
+     * Bind all of the application paths in the container.
+     *
+     * @return void
+     */
+    protected function bindPathsInContainer()
+    {
+        $this->instance('path', $this->basePath());
     }
 
     /**

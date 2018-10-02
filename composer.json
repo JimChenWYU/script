@@ -14,12 +14,16 @@
         "illuminate/console": "~5.5",
         "illuminate/container": "~5.5",
         "illuminate/events": "~5.5",
-        "symfony/finder": "~3.3"
+        "symfony/finder": "~3.3",
+        "illuminate/filesystem": "~5.5"
     },
     "autoload": {
         "psr-4": {
             "JimChen\\Script\\": "src/"
-        }
+        },
+        "files": [
+            "src/Foundation/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

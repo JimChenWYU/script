@@ -8,13 +8,9 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace JimChen\Script\Commands;
-
-use Illuminate\Console\Command as BaseCommand;
-
-abstract class Command extends BaseCommand
-{
-    public function handle()
+if (! function_exists('config')) {
+    function config($key = null, $default = null)
     {
+        return $default;
     }
 }
