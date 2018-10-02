@@ -19,10 +19,10 @@
     },
     "autoload": {
         "psr-4": {
-            "JimChen\\Script\\": "src/"
+            "App\\": "app/"
         },
         "files": [
-            "src/Foundation/helpers.php"
+            "app/Foundation/helpers.php"
         ]
     },
     "autoload-dev": {

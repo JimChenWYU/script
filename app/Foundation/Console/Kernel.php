@@ -8,14 +8,15 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace JimChen\Script\Foundation\Console;
+namespace App\Foundation\Console;
 
 use Illuminate\Console\Application as Artisan;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\Kernel as KernelContract;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
-use JimChen\Script\Foundation\Application;
+use App\Foundation\Application;
 use ReflectionClass;
 use Symfony\Component\Finder\Finder;
 
@@ -43,6 +44,15 @@ class Kernel implements KernelContract
     protected $commands = [];
 
     /**
+     * The Default artisan commands.
+     *
+     * @var array
+     */
+    protected $defaultCommands = [
+        \App\Foundation\Console\ConsoleMakeCommand::class,
+    ];
+
+    /**
      * The bootstrap classes for the application.
      *
      * @var array
@@ -57,7 +67,7 @@ class Kernel implements KernelContract
     /**
      * Create a new console kernel instance.
      *
-     * @param  \JimChen\Script\Foundation\Application  $app
+     * @param  \App\Foundation\Application  $app
      * @param  \Illuminate\Contracts\Events\Dispatcher  $events
      * @return void
      */
@@ -244,8 +254,6 @@ class Kernel implements KernelContract
      */
     public function getCommands(): array
     {
-        return array_merge($this->commands, [
-            \JimChen\Script\Foundation\Console\ConsoleMakeCommand::class
-        ]);
+        return array_merge($this->commands, $this->defaultCommands);
     }
 }

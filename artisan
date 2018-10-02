@@ -11,13 +11,13 @@
 
 require __DIR__.'/vendor/autoload.php';
 
-$app = new \JimChen\Script\Foundation\Application(
-    realpath(__DIR__ . '/src')
+$app = new App\Foundation\Application(
+    realpath(__DIR__ . '/app')
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    \JimChen\Script\Kernel::class
+    App\Kernel::class
 );
 
 $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);

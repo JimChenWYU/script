@@ -8,9 +8,9 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace JimChen\Script;
+namespace App;
 
-use JimChen\Script\Foundation\Console\Kernel as ConsoleKernel;
+use App\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {

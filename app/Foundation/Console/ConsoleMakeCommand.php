@@ -8,7 +8,7 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace JimChen\Script\Foundation\Console;
+namespace App\Foundation\Console;
 
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputArgument;

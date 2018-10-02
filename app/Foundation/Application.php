@@ -8,7 +8,7 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace JimChen\Script\Foundation;
+namespace App\Foundation;
 
 use Closure;
 use Illuminate\Container\Container;
@@ -27,7 +27,7 @@ class Application extends Container implements ApplicationContract
     /**
      * @var string
      */
-    protected $namespace = 'JimChen\\Script\\';
+    protected $namespace = 'App\\';
 
     /**
      * The base path for the Laravel installation.
@@ -90,7 +90,7 @@ class Application extends Container implements ApplicationContract
     {
         foreach ([
                      'app'    => [
-                         \JimChen\Script\Foundation\Application::class,
+                         \App\Foundation\Application::class,
                          \Illuminate\Contracts\Container\Container::class,
                          \Illuminate\Contracts\Foundation\Application::class,
                          \Psr\Container\ContainerInterface::class,
