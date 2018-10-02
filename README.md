@@ -13,6 +13,10 @@ $ composer create-project jimchen/script script --prefer-dist
 #### Create a command file
 
 ```bash
+$ cd script/
+```
+
+```bash
 $ php artisan make:command HelloCommand  // Create a file named `HelloCommand` in `app/Commands`
 ```
 
