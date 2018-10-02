@@ -25,6 +25,11 @@ class Application extends Container implements ApplicationContract
     const VERSION = '0.1.0';
 
     /**
+     * @var string
+     */
+    protected $namespace = 'JimChen\\Script\\';
+
+    /**
      * The base path for the Laravel installation.
      *
      * @var string
@@ -124,7 +129,7 @@ class Application extends Container implements ApplicationContract
      */
     public function getNamespace()
     {
-        return 'JimChen\\Script\\';
+        return $this->namespace;
     }
 
     /**
