@@ -227,7 +227,7 @@ class Kernel implements KernelContract
             $command = $namespace.str_replace(
                     ['/', '.php'],
                     ['\\', ''],
-                    Str::after($command->getPathname(), $this->app->basePath().DIRECTORY_SEPARATOR)
+                    ltrim(Str::after($command->getPathname(), $this->app->path()), '\\/')
                 );
 
             if (is_subclass_of($command, Command::class) &&

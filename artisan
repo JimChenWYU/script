@@ -12,7 +12,7 @@
 require __DIR__.'/vendor/autoload.php';
 
 $app = new App\Foundation\Application(
-    realpath(__DIR__ . '/app')
+    realpath(__DIR__)
 );
 
 $app->singleton(

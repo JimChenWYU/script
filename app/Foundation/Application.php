@@ -14,6 +14,7 @@ use Closure;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 use Illuminate\Events\EventServiceProvider;
+use RuntimeException;
 
 class Application extends Container implements ApplicationContract
 {
@@ -27,7 +28,7 @@ class Application extends Container implements ApplicationContract
     /**
      * @var string
      */
-    protected $namespace = 'App\\';
+    protected $namespace;
 
     /**
      * The base path for the Laravel installation.
@@ -129,7 +130,7 @@ class Application extends Container implements ApplicationContract
      */
     protected function bindPathsInContainer()
     {
-        $this->instance('path', $this->basePath());
+        $this->instance('path', $this->path());
     }
 
     /**
@@ -141,7 +142,21 @@ class Application extends Container implements ApplicationContract
      */
     public function getNamespace()
     {
-        return $this->namespace;
+        if (! is_null($this->namespace)) {
+            return $this->namespace;
+        }
+
+        $composer = json_decode(file_get_contents($this->basePath('composer.json')), true);
+
+        foreach ((array) data_get($composer, 'autoload.psr-4') as $namespace => $path) {
+            foreach ((array) $path as $pathChoice) {
+                if (realpath($this->path()) == realpath($this->basePath().'/'.$pathChoice)) {
+                    return $this->namespace = $namespace;
+                }
+            }
+        }
+
+        throw new RuntimeException('Unable to detect application namespace.');
     }
 
     /**
@@ -202,6 +217,16 @@ class Application extends Container implements ApplicationContract
     public function basePath($path = '')
     {
         return $this->basePath . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+    }
+
+    /**
+     * Get the path to the application "app" directory.
+     *
+     * @return string
+     */
+    public function path()
+    {
+        return $this->basePath.DIRECTORY_SEPARATOR.'app';
     }
 
     /**
